@@ -1,0 +1,242 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import { AppDataSource } from '../data-source';
+import { Listing, ListingStatus, ListingFor } from '../listing/listing.entity';
+
+async function seedListings() {
+  try {
+    await AppDataSource.initialize();
+
+    const listingRepository = AppDataSource.getRepository(Listing);
+
+    const sampleListings: Partial<Listing>[] = [
+      {
+        title: "Modern Downtown Apartment",
+        addressLine1: "123 Main St",
+        city: "Austin",
+        state: "TX",
+        country: "USA",
+        zipcode: "78701",
+        description: "A beautiful modern apartment located downtown.",
+        listedBy: { name: "Alice Johnson", email: "alice@example.com", companyName: "Austin Realty" },
+        thumbNailUrl: "https://example.com/images/apt1.jpg",
+        propertyImages: [
+          { url: "https://example.com/images/apt1_1.jpg", label: "Living Room" },
+          { url: "https://example.com/images/apt1_2.jpg", label: "Bedroom" }
+        ],
+        wishlisted: false,
+        rent: 1800,
+        deposit: 900,
+        type: "Apartment",
+        bedrooms: "2",
+        baths: "2",
+        yearBuilt: 2018,
+        size: 900,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+      {
+        title: "Cozy Suburban House",
+        addressLine1: "456 Oak Drive",
+        city: "Dallas",
+        state: "TX",
+        country: "USA",
+        zipcode: "75201",
+        description: "A cozy house with a big backyard perfect for families.",
+        listedBy: { name: "Bob Smith", email: "bob@example.com" },
+        thumbNailUrl: "https://example.com/images/house1.jpg",
+        propertyImages: [
+          { url: "https://example.com/images/house1_1.jpg", label: "Front View" },
+          { url: "https://example.com/images/house1_2.jpg", label: "Backyard" }
+        ],
+        wishlisted: false,
+        rent: 2200,
+        deposit: 1100,
+        type: "House",
+        bedrooms: "3",
+        baths: "2",
+        yearBuilt: 2005,
+        size: 1400,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+      {
+        title: "Luxury Condo with City View",
+        addressLine1: "789 Elm St",
+        city: "Houston",
+        state: "TX",
+        country: "USA",
+        zipcode: "77002",
+        description: "Luxury condo featuring stunning city views and amenities.",
+        listedBy: { name: "Claire Davis", email: "claire@example.com", companyName: "Houston Homes" },
+        thumbNailUrl: "https://example.com/images/condo1.jpg",
+        propertyImages: [
+          { url: "https://example.com/images/condo1_1.jpg", label: "Balcony View" },
+          { url: "https://example.com/images/condo1_2.jpg", label: "Pool" }
+        ],
+        wishlisted: true,
+        rent: 3200,
+        deposit: 1600,
+        type: "Condo",
+        bedrooms: "2",
+        baths: "2",
+        yearBuilt: 2020,
+        size: 1100,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+      {
+        title: "Charming Cottage",
+        addressLine1: "321 Pine Lane",
+        city: "San Antonio",
+        state: "TX",
+        country: "USA",
+        zipcode: "78205",
+        description: "A charming cottage nestled in a quiet neighborhood.",
+        listedBy: { name: "David Green", email: "david@example.com" },
+        thumbNailUrl: "https://example.com/images/cottage1.jpg",
+        propertyImages: [
+          { url: "https://example.com/images/cottage1_1.jpg", label: "Garden" },
+          { url: "https://example.com/images/cottage1_2.jpg", label: "Living Room" }
+        ],
+        wishlisted: false,
+        rent: 1500,
+        deposit: 750,
+        type: "Cottage",
+        bedrooms: "2",
+        baths: "1",
+        yearBuilt: 1995,
+        size: 800,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+      {
+        title: "Spacious Townhouse",
+        addressLine1: "654 Maple Street",
+        city: "Fort Worth",
+        state: "TX",
+        country: "USA",
+        zipcode: "76102",
+        description: "Spacious townhouse with modern finishes and garage.",
+        listedBy: { name: "Eva Brown", email: "eva@example.com", companyName: "Fort Worth Realty" },
+        thumbNailUrl: "https://example.com/images/townhouse1.jpg",
+        propertyImages: [
+          { url: "https://example.com/images/townhouse1_1.jpg", label: "Kitchen" },
+          { url: "https://example.com/images/townhouse1_2.jpg", label: "Master Bedroom" }
+        ],
+        wishlisted: true,
+        rent: 2400,
+        deposit: 1200,
+        type: "Townhouse",
+        bedrooms: "3",
+        baths: "3",
+        yearBuilt: 2010,
+        size: 1600,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+      // Add 5 more listings similarly ...
+      {
+        title: "Downtown Loft",
+        addressLine1: "111 Center St",
+        city: "Austin",
+        state: "TX",
+        country: "USA",
+        zipcode: "78702",
+        description: "Loft with high ceilings and open floor plan.",
+        listedBy: { name: "Frank Lee", email: "frank@example.com" },
+        thumbNailUrl: "https://example.com/images/loft1.jpg",
+        propertyImages: [],
+        wishlisted: false,
+        rent: 2100,
+        deposit: 1050,
+        type: "Loft",
+        bedrooms: "1",
+        baths: "1",
+        yearBuilt: 2015,
+        size: 850,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+      {
+        title: "Beachfront Villa",
+        addressLine1: "999 Ocean Drive",
+        city: "Galveston",
+        state: "TX",
+        country: "USA",
+        zipcode: "77550",
+        description: "Luxury villa with direct beach access.",
+        listedBy: { name: "Grace Kim", email: "grace@example.com" },
+        thumbNailUrl: "https://example.com/images/villa1.jpg",
+        propertyImages: [],
+        wishlisted: true,
+        rent: 5500,
+        deposit: 2750,
+        type: "Villa",
+        bedrooms: "4",
+        baths: "3",
+        yearBuilt: 2019,
+        size: 2500,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+      {
+        title: "Mountain Cabin",
+        addressLine1: "777 Forest Trail",
+        city: "Fredericksburg",
+        state: "TX",
+        country: "USA",
+        zipcode: "78624",
+        description: "Cozy cabin near hiking trails.",
+        listedBy: { name: "Henry Woods", email: "henry@example.com" },
+        thumbNailUrl: "https://example.com/images/cabin1.jpg",
+        propertyImages: [],
+        wishlisted: false,
+        rent: 1300,
+        deposit: 650,
+        type: "Cabin",
+        bedrooms: "2",
+        baths: "1",
+        yearBuilt: 2000,
+        size: 700,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+      {
+        title: "Historic Mansion",
+        addressLine1: "222 Heritage Rd",
+        city: "Dallas",
+        state: "TX",
+        country: "USA",
+        zipcode: "75205",
+        description: "Elegant mansion with historic charm.",
+        listedBy: { name: "Irene Scott", email: "irene@example.com", companyName: "Heritage Estates" },
+        thumbNailUrl: "https://example.com/images/mansion1.jpg",
+        propertyImages: [],
+        wishlisted: true,
+        rent: 7200,
+        deposit: 3600,
+        type: "Mansion",
+        bedrooms: "5",
+        baths: "5",
+        yearBuilt: 1920,
+        size: 5500,
+        status: ListingStatus.AVAILABLE,
+        listingFor: ListingFor.RENT,
+      },
+    ];
+
+    for (const listingData of sampleListings) {
+      const listing = listingRepository.create(listingData);
+      await listingRepository.save(listing);
+    }
+
+    console.log('Seeded 10 listings successfully.');
+
+    await AppDataSource.destroy();
+  } catch (error) {
+    console.error('❌ Error seeding listings:', error);
+  }
+}
+
+seedListings();
