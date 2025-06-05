@@ -1,19 +1,21 @@
 import { ListingsService } from './listing.service';
 import { CreateListingDto } from './create-listing.dto';
-import { Listing } from './listing.entity';
 export declare class ListingsController {
     private readonly service;
     constructor(service: ListingsService);
-    create(body: CreateListingDto): Promise<Listing>;
+    create(body: CreateListingDto): Promise<import("./listing.entity").Listing>;
     findAll(): Promise<{
         totalCount: number;
-        listings: Listing[];
+        listings: import("./listing.entity").Listing[];
     }>;
-    searchListings(query: string): Promise<Listing[]>;
+    searchListings(query: string, wishlistedOnly?: boolean): Promise<{
+        totalCount: number;
+        listings: import("./listing.entity").Listing[];
+    }>;
     getWishlistedListings(): Promise<{
         count: number;
-        listings: Listing[];
+        listings: import("./listing.entity").Listing[];
     }>;
-    findOne(id: string): Promise<Listing | null>;
-    updateWishlist(id: string, wishlisted: boolean): Promise<Listing>;
+    findOne(id: string): Promise<import("./listing.entity").Listing | null>;
+    updateWishlist(id: string, wishlisted: boolean): Promise<import("./listing.entity").Listing>;
 }

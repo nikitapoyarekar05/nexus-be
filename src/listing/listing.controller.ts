@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
@@ -7,11 +8,11 @@ import {
   Body,
   Query,
   BadRequestException,
+  ParseBoolPipe,
 } from '@nestjs/common';
 
 import { ListingsService } from './listing.service';
 import { CreateListingDto } from './create-listing.dto';
-import { Listing } from './listing.entity';
 
 @Controller('listings')
 export class ListingsController {
@@ -30,13 +31,20 @@ export class ListingsController {
       listings,
     };
   }
-
-  @Get('search')
-  searchListings(@Query('query') query: string): Promise<Listing[]> {
-    if (!query?.trim()) {
+    @Get('search')
+    async searchListings(
+      @Query('query') query: string,
+      @Query('wishlistedOnly', new ParseBoolPipe({ optional: true })) 
+      wishlistedOnly?: boolean,
+    ) {
+      if (!query?.trim()) {
       throw new BadRequestException('Search query is required');
     }
-    return this.service.search(query.trim());
+    const listings = await this.service.search(query.trim(), wishlistedOnly);
+    return {
+      totalCount: listings.length,
+      listings,
+    };
   }
 
   @Get('wishlist')

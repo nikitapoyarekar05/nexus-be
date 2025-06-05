@@ -31,11 +31,15 @@ let ListingsController = class ListingsController {
             listings,
         };
     }
-    searchListings(query) {
+    async searchListings(query, wishlistedOnly) {
         if (!query?.trim()) {
             throw new common_1.BadRequestException('Search query is required');
         }
-        return this.service.search(query.trim());
+        const listings = await this.service.search(query.trim(), wishlistedOnly);
+        return {
+            totalCount: listings.length,
+            listings,
+        };
     }
     async getWishlistedListings() {
         const [listings, count] = await this.service.getWishlistedListings();
@@ -68,8 +72,9 @@ __decorate([
 __decorate([
     (0, common_1.Get)('search'),
     __param(0, (0, common_1.Query)('query')),
+    __param(1, (0, common_1.Query)('wishlistedOnly', new common_1.ParseBoolPipe({ optional: true }))),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Boolean]),
     __metadata("design:returntype", Promise)
 ], ListingsController.prototype, "searchListings", null);
 __decorate([

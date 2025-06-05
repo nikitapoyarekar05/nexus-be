@@ -41,16 +41,24 @@ let ListingsService = class ListingsService {
     findOne(id) {
         return this.repo.findOneBy({ id });
     }
-    async search(query) {
+    async search(query, wishlistedOnly = false) {
+        const conditions = [];
+        const searchConditions = [
+            { title: (0, typeorm_2.ILike)(`%${query}%`) },
+            { description: (0, typeorm_2.ILike)(`%${query}%`) },
+            { addressLine1: (0, typeorm_2.ILike)(`%${query}%`) },
+            { city: (0, typeorm_2.ILike)(`%${query}%`) },
+            { state: (0, typeorm_2.ILike)(`%${query}%`) },
+            { country: (0, typeorm_2.ILike)(`%${query}%`) },
+        ];
+        if (wishlistedOnly) {
+            conditions.push(...searchConditions.map(condition => ({ ...condition, wishlisted: true })));
+        }
+        else {
+            conditions.push(...searchConditions);
+        }
         const listings = await this.repo.find({
-            where: [
-                { title: (0, typeorm_2.ILike)(`%${query}%`) },
-                { description: (0, typeorm_2.ILike)(`%${query}%`) },
-                { addressLine1: (0, typeorm_2.ILike)(`%${query}%`) },
-                { city: (0, typeorm_2.ILike)(`%${query}%`) },
-                { state: (0, typeorm_2.ILike)(`%${query}%`) },
-                { country: (0, typeorm_2.ILike)(`%${query}%`) },
-            ],
+            where: conditions,
         });
         return listings;
     }

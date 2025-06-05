@@ -7,7 +7,7 @@ export declare class ListingsService {
     create(data: CreateListingDto): Promise<Listing>;
     findAll(): Promise<Listing[]>;
     findOne(id: number): Promise<Listing | null>;
-    search(query: string): Promise<Listing[]>;
+    search(query: string, wishlistedOnly?: boolean): Promise<Listing[]>;
     updateWishlist(id: number, wishlisted: boolean): Promise<Listing>;
     getWishlistedListings(): Promise<[Listing[], number]>;
 }

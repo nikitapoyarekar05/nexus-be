@@ -1,6 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, ILike } from 'typeorm';
+import { Repository, ILike, FindOptionsWhere } from 'typeorm';
 import { Listing, ListingFor } from './listing.entity';
 import { CreateListingDto } from './create-listing.dto';
 
@@ -31,16 +32,25 @@ export class ListingsService {
     return this.repo.findOneBy({ id });
   }
 
-  async search(query: string): Promise<Listing[]> {
+  async search(query: string, wishlistedOnly: boolean = false): Promise<Listing[]> {
+    const conditions: FindOptionsWhere<Listing>[] = [];
+    const searchConditions: FindOptionsWhere<Listing>[] = [ 
+      { title: ILike(`%${query}%`) },
+      { description: ILike(`%${query}%`) },
+      { addressLine1: ILike(`%${query}%`) },
+      { city: ILike(`%${query}%`) },
+      { state: ILike(`%${query}%`) },
+      { country: ILike(`%${query}%`) },
+    ];
+
+    if (wishlistedOnly) {
+      conditions.push(...searchConditions.map(condition => ({ ...condition, wishlisted: true })));
+    } else {
+      conditions.push(...searchConditions);
+    }
+
     const listings: Listing[] = await this.repo.find({
-      where: [
-        { title: ILike(`%${query}%`) },
-        { description: ILike(`%${query}%`) },
-        { addressLine1: ILike(`%${query}%`) },
-        { city: ILike(`%${query}%`) },
-        { state: ILike(`%${query}%`) },
-        { country: ILike(`%${query}%`) },
-      ],
+      where: conditions,
     });
     return listings;
   }
