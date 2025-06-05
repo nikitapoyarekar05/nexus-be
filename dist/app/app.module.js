@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const config_1 = require("@nestjs/config");
 const listing_module_1 = require("../listing/listing.module");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
@@ -18,16 +19,18 @@ exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            config_1.ConfigModule.forRoot({ isGlobal: true }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
-                entities: [],
-                synchronize: true,
-                port: 5432,
-                username: 'postgres',
-                password: 'Yogini@2908',
-                database: 'nexus',
                 host: process.env.DB_HOST,
+                port: 5432,
+                username: process.env.DB_USERNAME,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,
+                ssl: process.env.DB_SSL === 'true',
+                extra: process.env.DB_SSL === 'true' ? { ssl: { rejectUnauthorized: false } } : {},
                 autoLoadEntities: true,
+                synchronize: true,
             }),
             listing_module_1.ListingModule,
         ],

@@ -18,8 +18,8 @@ async function seedListings() {
                 listedBy: { name: "Alice Johnson", email: "alice@example.com", companyName: "Austin Realty" },
                 thumbNailUrl: "https://example.com/images/apt1.jpg",
                 propertyImages: [
-                    { url: "https://example.com/images/apt1_1.jpg", label: "Living Room" },
-                    { url: "https://example.com/images/apt1_2.jpg", label: "Bedroom" }
+                    { url: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=800&q=80", label: "Living Room" },
+                    { url: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80", label: "Bedroom" }
                 ],
                 wishlisted: false,
                 rent: 1800,
@@ -66,7 +66,7 @@ async function seedListings() {
                 zipcode: "77002",
                 description: "Luxury condo featuring stunning city views and amenities.",
                 listedBy: { name: "Claire Davis", email: "claire@example.com", companyName: "Houston Homes" },
-                thumbNailUrl: "https://example.com/images/condo1.jpg",
+                thumbNailUrl: "https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=800&q=80",
                 propertyImages: [
                     { url: "https://example.com/images/condo1_1.jpg", label: "Balcony View" },
                     { url: "https://example.com/images/condo1_2.jpg", label: "Pool" }

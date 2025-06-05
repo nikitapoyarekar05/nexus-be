@@ -21,8 +21,8 @@ async function seedListings() {
         listedBy: { name: "Alice Johnson", email: "alice@example.com", companyName: "Austin Realty" },
         thumbNailUrl: "https://example.com/images/apt1.jpg",
         propertyImages: [
-          { url: "https://example.com/images/apt1_1.jpg", label: "Living Room" },
-          { url: "https://example.com/images/apt1_2.jpg", label: "Bedroom" }
+          { url:  "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=800&q=80", label: "Living Room" },
+          { url: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80", label: "Bedroom" }
         ],
         wishlisted: false,
         rent: 1800,
