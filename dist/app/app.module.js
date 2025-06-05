@@ -29,8 +29,6 @@ exports.AppModule = AppModule = __decorate([
                 username: process.env.DB_USERNAME,
                 password: process.env.DB_PASSWORD,
                 database: process.env.DB_NAME,
-                entities: ["src/entity/*.ts"],
-                migrations: ["src/migrations/*.ts"],
                 autoLoadEntities: true,
                 synchronize: true,
                 ssl: {
