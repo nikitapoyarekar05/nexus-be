@@ -24,6 +24,7 @@ jobs:
             cd /home/ec2-user/nexus-be
             git pull origin main
             npm install
+            npm test
             npm run build
             pm2 restart nest-app || pm2 start dist/main.js --name nest-app
           EOF
