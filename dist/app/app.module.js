@@ -12,22 +12,28 @@ const typeorm_1 = require("@nestjs/typeorm");
 const listing_module_1 = require("../listing/listing.module");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            config_1.ConfigModule.forRoot({
+                isGlobal: true,
+            }),
             typeorm_1.TypeOrmModule.forRoot({
-                type: 'postgres',
-                entities: [],
-                synchronize: true,
-                port: 5432,
-                username: 'postgres',
-                password: 'Yogini@2908',
-                host: 'localhost',
-                database: 'nexus',
+                type: "postgres",
+                host: process.env.DB_HOST,
+                port: Number(process.env.DB_PORT),
+                username: process.env.DB_USERNAME,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,
                 autoLoadEntities: true,
+                synchronize: true,
+                ssl: {
+                    rejectUnauthorized: false,
+                },
             }),
             listing_module_1.ListingModule,
         ],
