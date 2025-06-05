@@ -11,5 +11,6 @@ async function bootstrap() {
   await app.listen(process.env.PORT ?? 3300, '0.0.0.0');
   console.log(`Application is running on: ${await app.getUrl()}`);
   console.log('DB_USERNAME:', process.env.DB_USERNAME);
+  console.log('DB_NAME:', process.env.DB_NAME);
 }
 bootstrap();
