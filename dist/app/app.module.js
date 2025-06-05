@@ -19,14 +19,14 @@ exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot({ isGlobal: true }),
+            config_1.ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env', }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
-                host: "my-nexus-db.cr4gy2yuoift.us-east-2.rds.amazonaws.com",
+                host: process.env.DB_HOST,
                 port: 5432,
-                username: "postgres",
-                password: "Yogini!2908",
-                database: "nexus",
+                username: process.env.DB_USERNAME,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,
                 ssl: process.env.DB_SSL === 'true',
                 extra: process.env.DB_SSL === 'true' ? { ssl: { rejectUnauthorized: false } } : {},
                 autoLoadEntities: true,
