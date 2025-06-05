@@ -13,6 +13,17 @@ jobs:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v3
 
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🧪 Run Tests
+        run: npm test
+
       - name: 🔐 Setup SSH Key
         run: |
           echo "${{ secrets.EC2_KEY }}" > key.pem
@@ -24,7 +35,6 @@ jobs:
             cd /home/ec2-user/nexus-be
             git pull origin main
             npm install
-            npm test
             npm run build
             pm2 restart nest-app || pm2 start dist/main.js --name nest-app
           EOF
