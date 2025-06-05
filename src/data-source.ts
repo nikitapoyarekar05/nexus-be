@@ -7,11 +7,11 @@ import { Listing } from './listing/listing.entity';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: process.env.DB_HOST,
+  host: "my-nexus-db.cr4gy2yuoift.us-east-2.rds.amazonaws.com",
   port: 5432,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  username: "postgres",
+  password: "Yogini!2908",
+  database: "nexus",
   ssl: process.env.DB_SSL === 'true',
   extra: process.env.DB_SSL === 'true' ? { ssl: { rejectUnauthorized: false } } : {},
   entities: [Listing],
