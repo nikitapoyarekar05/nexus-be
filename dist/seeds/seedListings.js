@@ -66,7 +66,7 @@ async function seedListings() {
                 zipcode: "77002",
                 description: "Luxury condo featuring stunning city views and amenities.",
                 listedBy: { name: "Claire Davis", email: "claire@example.com", companyName: "Houston Homes" },
-                thumbNailUrl: "https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=800&q=80",
+                thumbNailUrl: "https://example.com/images/condo1.jpg",
                 propertyImages: [
                     { url: "https://example.com/images/condo1_1.jpg", label: "Balcony View" },
                     { url: "https://example.com/images/condo1_2.jpg", label: "Pool" }

@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import { AppDataSource } from '../data-source';
 import { Listing, ListingStatus, ListingFor } from '../listing/listing.entity';
 

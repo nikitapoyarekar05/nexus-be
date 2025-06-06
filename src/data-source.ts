@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 console.log("Loading DataSource...");
 
 import 'dotenv/config';
