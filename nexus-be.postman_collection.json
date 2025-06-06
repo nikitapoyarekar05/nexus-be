@@ -1,0 +1,587 @@
+{
+	"info": {
+		"_postman_id": "b3060702-c9d9-4144-b381-7c02b137309c",
+		"name": "nexus-be",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43617686",
+		"_collection_link": "https://nikita-2590175.postman.co/workspace/Nikita's-Workspace~44773798-a8ed-4334-8d54-5306d4118fd9/collection/43617686-b3060702-c9d9-4144-b381-7c02b137309c?action=share&source=collection_link&creator=43617686"
+	},
+	"item": [
+		{
+			"name": "local",
+			"item": [
+				{
+					"name": "Create Listing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Luxury Condo with City View\",\n  \"addressLine1\": \"789 Elm St\",\n  \"city\": \"Sunnyvale\",\n  \"state\": \"CA\",\n  \"country\": \"USA\",\n  \"zipcode\": \"77002\",\n  \"description\": \"Luxury condo featuring stunning city views and amenities.\",\n  \"listedBy\": {\n    \"name\": \"Nikita Poyrekar\",\n    \"email\": \"nikita.in.tech@gmail.com\",\n    \"companyName\": \"California Homes\"\n  },\n  \"thumbNailUrl\": \"https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=800&q=80\",\n  \"propertyImages\": [\n    {\n      \"url\": \"https://example.com/images/condo1_1.jpg\",\n      \"label\": \"Balcony View\"\n    },\n    {\n      \"url\": \"https://example.com/images/condo1_2.jpg\",\n      \"label\": \"Pool\"\n    }\n  ],\n  \"wishlisted\": false,\n  \"rent\": 4200,\n  \"deposit\": 8000,\n  \"type\": \"Condo\",\n  \"bedrooms\": \"2\",\n  \"baths\": \"2\",\n  \"yearBuilt\": 2024,\n  \"size\": 1780,\n  \"status\": \"AVAILABLE\",\n  \"listingFor\": \"RENT\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localBaseUrl}}/listings",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/listings",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/listings/1",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Title, description and address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/listings/search?query=city ",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "city "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favorite listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/listings/wishlist",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wishlist",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"wishlisted\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localBaseUrl}}/listings/1/wishlist",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"1",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hosted-ec2",
+			"item": [
+				{
+					"name": "Create Listing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Luxury Condo with City View\",\n  \"addressLine1\": \"789 Elm St\",\n  \"city\": \"Sunnyvale\",\n  \"state\": \"CA\",\n  \"country\": \"USA\",\n  \"zipcode\": \"77002\",\n  \"description\": \"Luxury condo featuring stunning city views and amenities.\",\n  \"listedBy\": {\n    \"name\": \"Nikita Poyrekar\",\n    \"email\": \"nikita.in.tech@gmail.com\",\n    \"companyName\": \"California Homes\"\n  },\n  \"thumbNailUrl\": \"https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=800&q=80\",\n  \"propertyImages\": [\n    {\n      \"url\": \"https://example.com/images/condo1_1.jpg\",\n      \"label\": \"Balcony View\"\n    },\n    {\n      \"url\": \"https://example.com/images/condo1_2.jpg\",\n      \"label\": \"Pool\"\n    }\n  ],\n  \"wishlisted\": false,\n  \"rent\": 4200,\n  \"deposit\": 8000,\n  \"type\": \"Condo\",\n  \"bedrooms\": \"2\",\n  \"baths\": \"2\",\n  \"yearBuilt\": 2024,\n  \"size\": 1780,\n  \"status\": \"AVAILABLE\",\n  \"listingFor\": \"RENT\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostedBaseUrl}}/listings",
+							"host": [
+								"{{hostedBaseUrl}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostedBaseUrl}}/listings",
+							"host": [
+								"{{hostedBaseUrl}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostedBaseUrl}}/listings/1",
+							"host": [
+								"{{hostedBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Title, description and address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostedBaseUrl}}/listings/search?query=city ",
+							"host": [
+								"{{hostedBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "city "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wishlist",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"wishlisted\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostedBaseUrl}}/listings/1/wishlist",
+							"host": [
+								"{{hostedBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"1",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favorite listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostedBaseUrl}}/listings/wishlist",
+							"host": [
+								"{{hostedBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ngrok",
+			"item": [
+				{
+					"name": "Create Listing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Luxury Condo with City View\",\n  \"addressLine1\": \"789 Elm St\",\n  \"city\": \"Sunnyvale\",\n  \"state\": \"CA\",\n  \"country\": \"USA\",\n  \"zipcode\": \"77002\",\n  \"description\": \"Luxury condo featuring stunning city views and amenities.\",\n  \"listedBy\": {\n    \"name\": \"Nikita Poyrekar\",\n    \"email\": \"nikita.in.tech@gmail.com\",\n    \"companyName\": \"California Homes\"\n  },\n  \"thumbNailUrl\": \"https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=800&q=80\",\n  \"propertyImages\": [\n    {\n      \"url\": \"https://example.com/images/condo1_1.jpg\",\n      \"label\": \"Balcony View\"\n    },\n    {\n      \"url\": \"https://example.com/images/condo1_2.jpg\",\n      \"label\": \"Pool\"\n    }\n  ],\n  \"wishlisted\": false,\n  \"rent\": 4200,\n  \"deposit\": 8000,\n  \"type\": \"Condo\",\n  \"bedrooms\": \"2\",\n  \"baths\": \"2\",\n  \"yearBuilt\": 2024,\n  \"size\": 1780,\n  \"status\": \"AVAILABLE\",\n  \"listingFor\": \"RENT\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ngRokBaseUrl}}/listings",
+							"host": [
+								"{{ngRokBaseUrl}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ngRokBaseUrl}}/listings",
+							"host": [
+								"{{ngRokBaseUrl}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ngRokBaseUrl}}/listings/1",
+							"host": [
+								"{{ngRokBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Title, description and address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ngRokBaseUrl}}/listings/search?query=city ",
+							"host": [
+								"{{ngRokBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "city "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wishlist",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"wishlisted\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ngRokBaseUrl}}/listings/1/wishlist",
+							"host": [
+								"{{ngRokBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"1",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favorite listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ngRokBaseUrl}}/listings/wishlist",
+							"host": [
+								"{{ngRokBaseUrl}}"
+							],
+							"path": [
+								"listings",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "railway",
+			"item": [
+				{
+					"name": "Create Listing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Luxury Condo with City View\",\n  \"addressLine1\": \"789 Elm St\",\n  \"city\": \"Sunnyvale\",\n  \"state\": \"CA\",\n  \"country\": \"USA\",\n  \"zipcode\": \"77002\",\n  \"description\": \"Luxury condo featuring stunning city views and amenities.\",\n  \"listedBy\": {\n    \"name\": \"Nikita Poyrekar\",\n    \"email\": \"nikita.in.tech@gmail.com\",\n    \"companyName\": \"California Homes\"\n  },\n  \"thumbNailUrl\": \"https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=800&q=80\",\n  \"propertyImages\": [\n    {\n      \"url\": \"https://example.com/images/condo1_1.jpg\",\n      \"label\": \"Balcony View\"\n    },\n    {\n      \"url\": \"https://example.com/images/condo1_2.jpg\",\n      \"label\": \"Pool\"\n    }\n  ],\n  \"wishlisted\": false,\n  \"rent\": 4200,\n  \"deposit\": 8000,\n  \"type\": \"Condo\",\n  \"bedrooms\": \"2\",\n  \"baths\": \"2\",\n  \"yearBuilt\": 2024,\n  \"size\": 1780,\n  \"status\": \"AVAILABLE\",\n  \"listingFor\": \"RENT\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{railwayHostedUrl}}/listings",
+							"host": [
+								"{{railwayHostedUrl}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{railwayHostedUrl}}/listings",
+							"host": [
+								"{{railwayHostedUrl}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3300/listings/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"listings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Title, description and address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3300/listings/search?query=city ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"listings",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "city "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wishlist",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"wishlisted\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3300/listings/1/wishlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"listings",
+								"1",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favorite listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3300/listings/wishlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"listings",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
