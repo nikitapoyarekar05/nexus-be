@@ -5,7 +5,6 @@ node_modules
 coverage
 
 # Environment variables
-.env
 
 # Build artifacts
 dist/
