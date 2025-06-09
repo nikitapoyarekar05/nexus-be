@@ -54,7 +54,7 @@ export class ListingsService {
     return listings;
   }
 
-  async updateWishlist(id: number, wishlisted: boolean) {
+  async updateWishlist(id: number, wishlisted: boolean) { //update name of the variable here
     const listing = await this.repo.findOneBy({ id });
     if (!listing) {
       throw new NotFoundException(`Listing with id ${id} not found`);
