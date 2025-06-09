@@ -8,6 +8,6 @@ async function bootstrap() {
   app.enableCors();
   await app.listen(process.env.PORT ?? 3300, '0.0.0.0');
   console.log(`Application is running on: ${await app.getUrl()}`);
-  // console.log('process.env.DB_USERNAME:', process.env.DB_USERNAME);
+  console.log('process.env.DB_USERNAME:', process.env.DB_USERNAME);
 }
 bootstrap();
