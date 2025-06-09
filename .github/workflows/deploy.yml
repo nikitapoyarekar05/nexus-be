@@ -33,6 +33,10 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd /home/ec2-user/nexus-be
+
+            git reset --hard
+            git clean -fd
+          
             git pull origin main
             npm install
             npm run build
