@@ -54,12 +54,12 @@ export class ListingsService {
     return listings;
   }
 
-  async updateWishlist(id: number, wishlisted: boolean) { //update name of the variable here
+  async updateWishlist(id: number, isFavorite: boolean) {
     const listing = await this.repo.findOneBy({ id });
     if (!listing) {
       throw new NotFoundException(`Listing with id ${id} not found`);
     }
-    listing.wishlisted = wishlisted;
+    listing.wishlisted = isFavorite;
     return this.repo.save(listing);
   }
 

@@ -1,3 +1,12 @@
+# Packages
 node_modules
+
+# Test
 coverage
+
+# Environment variables
 .env
+
+# Build artifacts
+dist/
+*.tsbuildinfo
