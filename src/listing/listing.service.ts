@@ -40,6 +40,10 @@ export class ListingsService {
       { city: ILike(`%${query}%`) },
       { state: ILike(`%${query}%`) },
       { country: ILike(`%${query}%`) },
+      { type: ILike(`%${query}%`) },
+      { laundry: ILike(`%${query}%`) },
+      { cooling: ILike(`%${query}%`) },
+      { heating: ILike(`%${query}%`) },
     ];
 
     if (wishlistedOnly) {
