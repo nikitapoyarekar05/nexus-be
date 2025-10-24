@@ -1,6 +1,6 @@
 # 🏗️ Neighbourly – Real Estate Backend (NestJS)
 
-This is the backend service for **Neighbourly**, a SaaS platform for real estate listings. Built using **NestJS**, it handles property listings, and communication with PostgreSQL using TypeORM.
+This is the backend service for **Neighbourly**, a platform for real estate listings. Built using **NestJS**, it handles property listings, and communication with PostgreSQL using TypeORM.
 
 ---
 
