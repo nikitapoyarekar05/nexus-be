@@ -39,10 +39,10 @@ Create a `.env` file in the root:
 PORT=3300
 DB_HOST=localhost
 DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=yourpassword
-DB_NAME=nexus
-JWT_SECRET=supersecret
+DB_USERNAME=your_db_username
+DB_PASSWORD=your_password
+DB_NAME=your_db_name
+DB_SSL=true
 ```
 
 ---
