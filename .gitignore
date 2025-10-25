@@ -1,15 +1,12 @@
-# Packages
-node_modules
+# Node.js dependencies
+node_modules/
 
-# Test
-coverage
+# Test coverage reports
+coverage/
 
-# Environment variables
+# Environment variables (should not be committed)
 .env
 
 # Build artifacts
 dist/
 *.tsbuildinfo
-
-#coverage
-coverage/
