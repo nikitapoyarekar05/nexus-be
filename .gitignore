@@ -10,3 +10,6 @@ coverage
 # Build artifacts
 dist/
 *.tsbuildinfo
+
+#coverage
+coverage/
