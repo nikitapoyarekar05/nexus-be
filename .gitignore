@@ -5,7 +5,7 @@ node_modules/
 coverage/
 
 # Environment variables (should not be committed)
-
+.env
 
 # Build artifacts
 dist/
